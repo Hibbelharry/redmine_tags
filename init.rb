@@ -21,11 +21,11 @@ require 'redmine_tags'
 require 'redmine_acts_as_taggable_on/initialize'
 
 Redmine::Plugin.register :redmine_tags do
-  name        'redmine_tags'
-  author      'Aleksey V Zapparov AKA "ixti"'
-  description 'Redmine tagging support'
-  version     '2.1.0'
-  url         'https://github.com/ixti/redmine_tags/'
+  name        'Redmine Tags'
+  author      'merged and modified by Minkbear'
+  description 'Redmine issues and wiki pages tagging support. Original Code from ixti with Tag management from redminecrm'
+  version     '2.2.0'
+  url         'https://github.com/minkbear/redmine_tags/'
   author_url  'http://www.ixti.net/'
 
   requires_redmine :version_or_higher => '2.1.0'
@@ -40,13 +40,12 @@ Redmine::Plugin.register :redmine_tags do
   }, :partial => 'tags/settings'
 end
 
-
 ActionDispatch::Callbacks.to_prepare do
   unless Issue.included_modules.include?(RedmineTags::Patches::IssuePatch)
     Issue.send(:include, RedmineTags::Patches::IssuePatch)
   end
 
-  [IssuesController, CalendarsController, GanttsController].each do |controller|
+  [IssuesController, CalendarsController, GanttsController, SettingsController].each do |controller|
     RedmineTags::Patches::AddHelpersForIssueTagsPatch.apply(controller)
   end
 
