@@ -1,6 +1,7 @@
+<% if @project.module_enabled?(:tags) && User.current.allowed_to?(:wiki_edit_tags, @project) %>
   <p id="wiki_tags">
-  <%= label_tag l(:tags), nil, :for => :wiki_page_tag_list  %>
-  <%= text_field_tag 'wiki_page[tag_list]', page.tag_list.to_s, :class => 'hol',  :size => 60, :id => :wiki_page_tag_list %>
+    <%= label_tag l(:tags), nil, :for => :wiki_page_tag_list  %>
+    <%= text_field_tag 'wiki_page[tag_list]', page.tag_list.to_s, :class => 'hol',  :size => 60, :id => :wiki_page_tag_list %>
   </p>
   <div id="wiki_tag_candidates" class="autocomplete"></div>
   <%= stylesheet_link_tag 'jquery.tagit.css', :plugin => 'redmine_tags' %>
@@ -22,4 +23,5 @@
     caseSensitive: false, 
     removeConfirmation: true,
 	});
-" %>
+  " %>
+<% end %>

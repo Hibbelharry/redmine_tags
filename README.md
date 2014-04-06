@@ -13,7 +13,8 @@ Feature
 
 - Add tag on issues and wiki pages
 - Tag management feature by [redminecrm](https://github.com/redminecrm/redmine_tags)
-- Role permission on edit tag
+- Enable/Disable tags module for each project
+- Role permission on editing tag
 
 Supported models
 ----------------

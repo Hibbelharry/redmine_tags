@@ -24,15 +24,16 @@ Redmine::Plugin.register :redmine_tags do
   name        'Redmine Tags'
   author      'merged and modified by Minkbear'
   description 'Redmine issues and wiki pages tagging support. Original Code from ixti with Tag management from redminecrm'
-  version     '2.2.1'
+  version     '2.3.0'
   url         'https://github.com/minkbear/redmine_tags/'
-  author_url  'http://www.ixti.net/'
+  author_url  'https://github.com/minkbear'
 
   requires_redmine :version_or_higher => '2.1.0'
   requires_acts_as_taggable_on
 
-  project_module :issue_tracking do
-    permission :edit_tag, { }
+  project_module :tags do
+    permission :issue_edit_tags, { }
+    permission :wiki_edit_tags, { }
   end
 
   settings :default => {

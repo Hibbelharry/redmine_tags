@@ -1,4 +1,4 @@
-<% if defined?(sidebar_tags) -%>
+<% if (defined?(sidebar_tags)) && @project.module_enabled?(:tags) -%>
   <% unless sidebar_tags.empty? -%>
     <%= stylesheet_link_tag 'jquery.tagit.css', :plugin => 'redmine_tags' %>
     <%= stylesheet_link_tag 'redmine_tags', :plugin => 'redmine_tags' %>

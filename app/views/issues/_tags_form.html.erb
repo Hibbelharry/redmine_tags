@@ -1,4 +1,4 @@
-<% if User.current.allowed_to?(:edit_tag, @project) %>
+<% if @project.module_enabled?(:tags) && User.current.allowed_to?(:issue_edit_tags, @project) %>
 <div>
   <p id="issue_tags">
   <% issue = Issue.new({:project => issues.first.project}) if defined? issues %>
